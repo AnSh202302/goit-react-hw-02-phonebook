@@ -16,14 +16,22 @@ export class App extends Component {
       id: nanoid(),
     };
 
-    this.setState(prev => ({
-      contacts: [contact, ...prev.contacts],
-    }));
+    // this.setState(prev => ({
+    //   contacts: [contact, ...prev.contacts],
+    // }));
 
-    this.state.contacts.map(
-      el =>
-        el.name === data.name && alert(data.name + ' is already in contacts.')
-    );
+    // this.state.contacts.map(
+    //   el =>
+    //     el.name === data.name && alert(data.name + ' is already in contacts.')
+    // );
+
+    if (this.state.contacts.find(el => el.name === data.name)) {
+      alert(data.name + ' is already in contacts.');
+      return;
+    }
+    this.setState(prev => ({
+      contacts: [...prev.contacts, contact],
+    }));
   };
 
   deleteUser = id => {
@@ -55,11 +63,7 @@ export class App extends Component {
 
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} handleSearch={this.handleSearch} />
-        <ContactList
-          contacts={visibleName}
-          filter={this.state.filter}
-          deleteUser={this.deleteUser}
-        />
+        <ContactList contacts={visibleName} deleteUser={this.deleteUser} />
       </>
     );
   }

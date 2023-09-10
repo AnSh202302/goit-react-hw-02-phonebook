@@ -1,4 +1,4 @@
-export const ContactList = ({ filter, contacts, deleteUser }) => {
+export const ContactList = ({ contacts, deleteUser }) => {
   return (
     <ul>
       {contacts.map(({ name, id, number }) => (
