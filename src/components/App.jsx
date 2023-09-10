@@ -15,16 +15,6 @@ export class App extends Component {
       ...data,
       id: nanoid(),
     };
-
-    // this.setState(prev => ({
-    //   contacts: [contact, ...prev.contacts],
-    // }));
-
-    // this.state.contacts.map(
-    //   el =>
-    //     el.name === data.name && alert(data.name + ' is already in contacts.')
-    // );
-
     if (this.state.contacts.find(el => el.name === data.name)) {
       alert(data.name + ' is already in contacts.');
       return;
